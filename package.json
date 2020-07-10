@@ -1,0 +1,71 @@
+{
+  "name": "@tal/component",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/tal-component-ui.common.js",
+  "files": [
+    "lib",
+    "src",
+    "packages",
+    "types"
+  ],
+  "scripts": {
+    "clear:lib": "rm -rf lib",
+    "babel:demo": "yarn clear:lib && npx babel src --out-dir lib",
+    "build:component": "yarn clear:lib && cross-env NODE_ENV=development webpack --config build/webpack.multi.entry.js",
+    "create:component.json": "rimraf component.json && node build/bin/created-component.js",
+    "build:file": "rimraf src/index.js && node build/bin/init-entry.js",
+    "build:commonjs": "yarn clear:lib && webpack --config build/webpack.common.config.js",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "keywords": [
+    "vue",
+    "comonent"
+  ],
+  "author": "zhanglimin",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^7.3.0",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-decorators": "^7.10.4",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "7",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "babylon": "^6.18.0",
+    "cross-env": "^7.0.2",
+    "css-loader": "^3.6.0",
+    "fork-ts-checker-webpack-plugin": "^5.0.6",
+    "json-templater": "^1.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.1",
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "sass-loader": "^9.0.1",
+    "sass-resources-loader": "^2.0.3",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^7.0.5",
+    "typescript": "~3.3",
+    "uppercamelcase": "^3.0.0",
+    "vue-class-component": "^7.2.3",
+    "vue-loader": "^15.9.2",
+    "vue-property-decorator": "^9.0.0",
+    "vue-style-loader": "^4.1.2",
+    "vuepress": "^1.5.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-node-externals": "^1.7.2"
+  }
+}

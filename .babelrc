@@ -1,0 +1,38 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "loose": true,
+        "targets": {
+          "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+        }
+      }
+    ],
+    // js完成初步规范。
+    "stage-2",
+    "preset-typescrip"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "transform-vue-jsx",
+    [
+      "module-resolver",
+      {
+        "root": ["tal-component"],
+        "alias": {
+          "tal-component/src": "tal-component/libs"
+        }
+      }
+    ],
+    [
+      "plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    // 再编译 class 语法
+    "plugin-proposal-class-properties"
+  ]
+}
