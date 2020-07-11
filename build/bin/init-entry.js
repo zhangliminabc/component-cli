@@ -1,9 +1,7 @@
 /**
  * 自动生成src下的index.js文件
  */
-const {
-  execSync
-} = require('child_process')
+const { execSync } = require("child_process");
 const path = require("path");
 const fs = require("fs");
 
@@ -11,9 +9,9 @@ const render = require("json-templater/string");
 const uppercamelcase = require("uppercamelcase");
 const endOfLine = require("os").EOL;
 // 引入组件语句模板
-const IMPORT_TEMPLATE = `import {{packageName}} from \'../packages/{{name}}/index.js\';`;
+const IMPORT_TEMPLATE = `import {{packageName}} from \'./packages/{{name}}/index.ts\';`;
 // 安转组件模板语句
-const INSTALL_TEMPLATE = `{{name}}`
+const INSTALL_TEMPLATE = `{{name}}`;
 // 输出路径
 const OUTPUT_PATH = path.join(__dirname, "../../src/index.ts");
 // 自动生成src/index.js
@@ -44,35 +42,39 @@ export default {
 // 判断component.json是否存在
 const isExists = () => {
   try {
-    return fs.statSync(path.resolve(process.cwd(), './component.json'))
+    return fs.statSync(path.resolve(process.cwd(), "./component.json"));
   } catch (error) {
-    return false
+    return false;
   }
-}
-const isExtised = isExists()
+};
+const isExtised = isExists();
 // 不存在执行脚本生成
 if (!isExtised) {
-  execSync('node build/bin/created-component.js')
+  execSync("node build/bin/created-component.js");
 }
 
-const componentMap = require('../../component.json')
-const componetList = Object.keys(componentMap)
+const componentMap = require("../../component.json");
+const componetList = Object.keys(componentMap);
 
-const includeList = []
-const listTemplate = []
-const installList = []
+const includeList = [];
+const listTemplate = [];
+const installList = [];
 // 编译生成模板
-componetList.forEach(componentName => {
-  const packageName = uppercamelcase(componentName)
-  includeList.push(render(IMPORT_TEMPLATE, {
-    packageName,
-    name: componentName
-  }))
-  installList.push(render(INSTALL_TEMPLATE, {
-    name: packageName
-  }))
-  listTemplate.push(packageName)
-})
+componetList.forEach((componentName) => {
+  const packageName = uppercamelcase(componentName);
+  includeList.push(
+    render(IMPORT_TEMPLATE, {
+      packageName,
+      name: componentName,
+    })
+  );
+  installList.push(
+    render(INSTALL_TEMPLATE, {
+      name: packageName,
+    })
+  );
+  listTemplate.push(packageName);
+});
 
 const template = render(MAIN_TEMPLATE, {
   include: includeList.join(endOfLine),
