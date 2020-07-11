@@ -7,9 +7,9 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component({
-  name: "TreeComponet"
+  name: "Tree",
 })
-export default class TreeComponet extends Vue {}
+export default class Tree extends Vue {}
 </script>
 <style lang="scss" scoped>
 .tree-component {

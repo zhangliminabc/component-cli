@@ -9,9 +9,9 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component({
-  name: "droupDownComp"
+  name: "DroupDown",
 })
-export default class droupDownComp extends Vue {
+export default class DroupDown extends Vue {
   tabSelected: number = 0;
   msg = "这是demo弹窗";
 }

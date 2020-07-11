@@ -1,6 +1,6 @@
-import TreeComp from "./src/index.vue";
+import Tree from "./src/index.vue";
 
-TreeComp.install = (vue) => {
-  vue.component(TreeComp.name, TreeComp);
+Tree.install = (vue) => {
+  vue.component(Tree.name, Tree);
 };
-export default TreeComp;
+export default Tree;

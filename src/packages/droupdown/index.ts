@@ -1,9 +1,6 @@
-import { Vue } from "vue-property-decorator";
+import DroupDown from "./src/index.vue";
 
-import droupdown from "./src/index.vue";
-
-droupdown.install = () => {
-  Vue.component(droupdown.name, droupdown);
+DroupDown.install = (vue) => {
+  vue.component(DroupDown.name, DroupDown);
 };
-
-export default droupdown;
+export default DroupDown;
