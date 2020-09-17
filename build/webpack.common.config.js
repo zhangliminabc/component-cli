@@ -1,36 +1,34 @@
-const path = require('path')
-const nodeExternals = require("webpack-node-externals");
-const baseConfig = require('./webpack.base.config')
-const webpackUtile = require('./webpack.utils')
+const path = require("path");
+const {
+  utils
+} = require("./webpack");
+// 加载webpack的公用配置
+const webpackBaseConfig = require("./webpack.base.config");
 
 const overallImportConfig = {
+  mode: "production",
   entry: {
-    app: ['./src/index.js']
+    app: path.resolve(process.cwd(), "./src/index.ts"),
   },
   output: {
-    path: path.resolve(process.cwd(), './lib'),
-    publicPath: '/dist/',
-    filename: 'tal-component-ui.common.js',
-    chunkFilename: '[id].js',
-    libraryExport: 'default',
-    library: 'tal-component',
-    libraryTarget: 'commonjs2'
+    path: path.resolve(process.cwd(), "./lib"),
+    publicPath: "/dist/",
+    filename: "index.js",
+    libraryExport: "default",
+    library: "element-ui",
+    libraryTarget: "commonjs2",
   },
-  externals: [
-    Object.assign({
-      vue: "vue",
-    }),
-    nodeExternals(),
-  ]
-}
-
-const {
-  webpackBaseConfig,
-  webpackCommonPlugin
-} = baseConfig
+};
 
 const {
   margerWebpack
-} = webpackUtile
+} = utils;
 
-module.exports = margerWebpack(webpackBaseConfig, webpackCommonPlugin, overallImportConfig)
+const webpackCommonConfig = margerWebpack(
+  webpackBaseConfig,
+  overallImportConfig
+);
+
+module.exports = {
+  ...webpackCommonConfig,
+};

@@ -1,8 +1,8 @@
 {
-  "name": "@tal/component",
+  "name": "element-ui",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/tal-component-ui.common.js",
+  "main": "lib/index.js",
   "files": [
     "lib",
     "src",
@@ -11,13 +11,14 @@
   ],
   "scripts": {
     "clear:lib": "rm -rf lib",
-    "babel:demo": "yarn clear:lib && npx babel src --out-dir lib",
-    "build:component": "yarn clear:lib && cross-env NODE_ENV=development webpack --config build/webpack.multi.entry.js",
+    "babel:demo": "yarn clear:lib && npx babel src/demo.ts --out-dir lib",
+    "build:component": "cross-env NODE_ENV=development webpack --config build/webpack.multi.entry.js",
     "create:component.json": "rimraf component.json && node build/bin/created-component.js",
-    "build:file": "rimraf src/index.js && node build/bin/init-entry.js",
-    "build:commonjs": "yarn clear:lib && webpack --config build/webpack.common.config.js",
+    "build:file": "rimraf src/index.ts && node build/bin/init-entry.js",
+    "build:commonjs": "webpack --config build/webpack.common.config.js",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "build": "yarn clear:lib && yarn build:component && yarn build:commonjs && node build/bin/created-css.js"
   },
   "keywords": [
     "vue",

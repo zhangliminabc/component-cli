@@ -7,12 +7,13 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component({
-  name: "Tree",
+  name: "Tree"
 })
 export default class Tree extends Vue {}
 </script>
 <style lang="scss" scoped>
-.tree-component {
-  @include section-mixin;
-}
+// .tree-component {
+//   @include section-mixin;
+// }
+//
 </style>

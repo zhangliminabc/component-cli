@@ -17,6 +17,8 @@ const overallImportConfig = {
     publicPath: "/dist/",
     filename: "[name].js",
     chunkFilename: "[id].js",
+    libraryExport: "default",
+    library: "element-ui",
     libraryTarget: "commonjs2",
   }
 };

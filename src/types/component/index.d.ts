@@ -1,4 +1,4 @@
 export * from "./tal-component";
 
-import * as talComponent from "./tal-component";
-export default talComponent;
+import * as ElementUI from "./tal-component";
+export default ElementUI;

@@ -9,7 +9,7 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component({
-  name: "DroupDown",
+  name: "DroupDown"
 })
 export default class DroupDown extends Vue {
   tabSelected: number = 0;
@@ -18,9 +18,9 @@ export default class DroupDown extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.tal-droupdown-comp {
-  border: 1px solid;
-  @include section-mixin;
-  @include font_color("font_color1");
-}
+// .tal-droupdown-comp {
+//   border: 1px solid;
+//   @include section-mixin;
+//   @include font_color("font_color1");
+// }
 </style>

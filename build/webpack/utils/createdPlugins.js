@@ -1,5 +1,7 @@
 const path = require("path");
-
+const {
+  NODE_ENV
+} = require('../config')
 /**
  * 打包进度条插件
  */
@@ -21,15 +23,14 @@ module.exports = function (pluginInstance) {
     new progressBarWebpackPlugin(),
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: "style/[name].css",
-      chunkFilename: "style/[id].css"
+      filename: NODE_ENV === 'development' ? "theme-default/[name].css" : 'theme-default/index.css'
     }),
-  ]
-  if (!pluginInstance) return basePlugins
+  ];
+  if (!pluginInstance) return basePlugins;
   if (Array.isArray(pluginInstance)) {
-    return basePlugins.concat(pluginInstance)
+    return basePlugins.concat(pluginInstance);
   } else {
-    basePlugins.push(pluginInstance)
-    return basePlugins
+    basePlugins.push(pluginInstance);
+    return basePlugins;
   }
-}
+};

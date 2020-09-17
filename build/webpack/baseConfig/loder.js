@@ -4,7 +4,8 @@ var config = require("../config");
 const webpackUtils = require("../utils/index");
 
 // loader配置
-module.exports = [{
+module.exports = [
+  {
     test: /\.(jsx?|babel|es6)$/,
     include: process.cwd(),
     exclude: config.jsexclude,
@@ -21,27 +22,33 @@ module.exports = [{
   },
   {
     test: /\.css$/,
-    loaders: [{
-        loader: "vue-style-loader"
+    loaders: ["style-loader", "css-loader"],
+  },
+  {
+    test: /\.css$/,
+    loaders: [
+      {
+        loader: "vue-style-loader",
       },
       {
         loader: "css-loader",
         options: {
-          sourceMap: true
-        }
+          sourceMap: true,
+        },
       },
     ],
   },
   {
     test: /\.(sa|sc|c)ss$/,
-    loaders: [{
+    loaders: [
+      {
         loader: miniCssExtractPlugin.loader,
         options: {
           hmr: process.env.NODE_ENV === "development",
         },
       },
-      'css-loader',
-      'sass-loader',
+      "css-loader",
+      "sass-loader",
       {
         loader: "sass-resources-loader",
         options: {
@@ -56,7 +63,7 @@ module.exports = [{
     test: /\.tsx?$/,
     loader: "ts-loader",
     options: {
-      appendTsSuffixTo: [/\.vue$/]
+      appendTsSuffixTo: [/\.vue$/],
     },
     exclude: config.jsexclude,
   },

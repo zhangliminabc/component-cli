@@ -5,7 +5,12 @@ module.exports = function () {
   const paramslist = arguments
   if (paramslist.length <= 0) return {}
   const list = Array.from(arguments)
-  return list.reduce((pre, value) => {
-    return Object.assign(pre, value)
-  }, {})
+  const result = {}
+  list.forEach((params) => {
+    Object.keys(params).forEach(key => {
+      const paramsValue = params[key]
+      result[key] = paramsValue
+    })
+  })
+  return result
 }

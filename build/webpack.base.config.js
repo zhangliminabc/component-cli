@@ -17,7 +17,7 @@ const optimization = {
         // name： ‘common/common’ //  即先生成common文件夹
         chunks: "initial", // initial表示提取入口文件的公共css及
         // chunks: 'all' // 提取所有文件的公共部分
-        test: '/\.css$/', // 只提取公共css ，命名可改styles
+        test: "/.css$/", // 只提取公共css ，命名可改styles
         minChunks: 2, // 表示提取公共部分最少的文件数
         minSize: 0, // 表示提取公共部分最小的大小
       },
@@ -33,7 +33,7 @@ const performance = {
   hints: "error",
 };
 
-const webpackBaseConfig = require('./webpack')
+const webpackBaseConfig = require("./webpack");
 const {
   utils: {
     createPlugins
@@ -42,19 +42,27 @@ const {
   resolve,
   externals,
   stats,
-  NODE_ENV
-} = webpackBaseConfig
+  NODE_ENV,
+} = webpackBaseConfig;
 
 module.exports = {
   plugins: createPlugins(),
   stats,
   module: {
-    rules: loader
+    rules: loader,
   },
   externals,
   resolve: resolve,
-  performance,
-  devtool,
+  // devtool,
   mode: NODE_ENV,
-  optimization
-}
+  performance: {
+    hints: false,
+  },
+  optimization: {
+    minimize: false,
+  },
+  // resolve: {
+  //   extensions: [".js", ".vue", ".json", ".ts"],
+  //   modules: ["node_modules"],
+  // },
+};
